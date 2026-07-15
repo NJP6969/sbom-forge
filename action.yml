@@ -1,0 +1,24 @@
+name: "sbom-forge Supply Chain Guard"
+description: "AI-Powered Supply Chain Attack Surface Analyzer and Hardener"
+inputs:
+  path:
+    description: "Path to project directory containing lockfile"
+    required: false
+    default: "."
+  risk-threshold:
+    description: "Maximum allowable risk score before failing CI build (0.0 - 10.0)"
+    required: false
+    default: "7.0"
+  sarif-out:
+    description: "Path to write SARIF output report"
+    required: false
+    default: "sbom-forge-results.sarif"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "ci"
+    - "${{ inputs.path }}"
+    - "--threshold"
+    - "${{ inputs.risk-threshold }}"
