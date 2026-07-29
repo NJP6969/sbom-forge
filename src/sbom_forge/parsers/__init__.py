@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from sbom_forge.graph.models import PackageNode
 from sbom_forge.parsers.base import BaseParser
 from sbom_forge.parsers.npm import NpmParser
